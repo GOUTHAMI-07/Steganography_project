@@ -55,17 +55,17 @@ Status do_encoding(EncodeInfo *encInfo);
 Status check_capacity(EncodeInfo *encInfo);
 
 /* Get image size */
-uint get_image_size_for_bmp(FILE *fptr_image);
+uint get_image_size_for_bmp(FILE *fptr_image);//to find image is capable
 
 /* Get file size */
-uint get_file_size(FILE *fptr);
+uint get_file_size(FILE *fptr);//to find image is capable
 
 /* Copy bmp image header */
 Status copy_bmp_header(FILE *fptr_src_image, FILE *fptr_dest_image);
 
 /* Store Magic String */
 Status encode_magic_string(const char *magic_string, EncodeInfo *encInfo);
-
+Status encode_secret_file_extn_size(unit size, EncodeInfo *encInfo)
 /* Encode secret file extenstion */
 Status encode_secret_file_extn(const char *file_extn, EncodeInfo *encInfo);
 
@@ -80,6 +80,8 @@ Status encode_data_to_image(char *data, int size, FILE *fptr_src_image, FILE *fp
 
 /* Encode a byte into LSB of image data array */
 Status encode_byte_to_lsb(char data, char *image_buffer);
+
+Status encode_size_to_lsb(uint data, char *image_buffer);
 
 /* Copy remaining image bytes from src to stego image after encoding */
 Status copy_remaining_img_data(FILE *fptr_src, FILE *fptr_dest);
